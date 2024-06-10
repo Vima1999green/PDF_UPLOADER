@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 require("dotenv").config();
+const registerInputValidator = require("../validator/registerValidator");
 
 SECRET_KEY = process.env.SECRET_KEY;
 
@@ -9,6 +10,11 @@ SECRET_KEY = process.env.SECRET_KEY;
 //@desc: to resgister a user here we hash the passowords and store user details in database
 
 const registerUser = async (req, res) => {
+  const { errors, isValid } = registerInputValidator(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const { name, email, password } = req.body;
 
   const user = User.findOne({ email });
