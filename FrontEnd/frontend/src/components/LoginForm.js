@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
@@ -79,8 +80,10 @@ function LoginForm() {
             Reset
           </button>
         </div>
+
         {errors.msg && <span className="error-message">{errors.msg}</span>}
       </div>
+      <Link to="/signUp">Click here to Create an Account</Link>
     </div>
   );
 }

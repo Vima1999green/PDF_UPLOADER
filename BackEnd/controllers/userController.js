@@ -5,7 +5,7 @@ require("dotenv").config();
 const registerInputValidator = require("../validator/registerValidator");
 const loginValidator = require("../validator/loginValidator");
 
-SECRET_KEY = process.env.SECRET_KEY;
+const SECRET_KEY = process.env.SECRET_KEY;
 
 //@type: User Registration controller
 //@desc: to resgister a user here we hash the passowords and store user details in database

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/SignUpForm.css";
+import { Link } from "react-router-dom";
 
 function SignUpForm() {
   const [name, setName] = useState("");
@@ -111,6 +112,9 @@ function SignUpForm() {
           Reset
         </button>
       </div>
+      <Link to="/login">
+        If you already have an account.Click here to Login
+      </Link>
     </div>
   );
 }
