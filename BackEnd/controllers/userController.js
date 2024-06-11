@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const JWT = require("jsonwebtoken");
 require("dotenv").config();
 const registerInputValidator = require("../validator/registerValidator");
+const loginValidator = require("../validator/loginValidator");
 
 SECRET_KEY = process.env.SECRET_KEY;
 
@@ -54,6 +55,12 @@ const registerUser = async (req, res) => {
 //@type: User Login controller
 //@desc: check the user login is valid
 const loginUser = async (req, res) => {
+  const { errors, isValid } = loginValidator(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
   const { email, password } = req.body;
   const user = User.findOne({ email });
   user.then((user) => {
@@ -77,7 +84,7 @@ const loginUser = async (req, res) => {
           if (err) {
             res.status(500).json({ msg: "Error in token genarating", err });
           }
-          res.json({
+          res.status(200).json({
             success: true,
             token: "Bearer " + token,
           });
