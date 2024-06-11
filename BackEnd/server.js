@@ -6,6 +6,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const userRoutes = require("./routes/api/userRoute");
+const PdfRoutes = require("./routes/api/pdfRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -16,9 +17,11 @@ app.use(passport.initialize());
 
 require("./config/passport")(passport);
 
-//Routes
+//UserRoutes
 app.use("/api/users", userRoutes);
 
+//PdfRoutes
+app.use("/api/pdfs", PdfRoutes);
 //database connection
 mongoose
   .connect(process.env.MONGO_URI)

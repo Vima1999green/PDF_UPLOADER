@@ -1,18 +1,16 @@
-const multer = require("multer");
-const path = require("path");
-const jwt = require("jsonwebtoken");
-const User = require("../models/userModel");
-const pdf = require("../models/pdfModel");
-require("dotenv").config();
+const Pdf = require("../models/pdfModel");
 
-const SECRET_KEY = process.env.SECRET_KEY;
+const uploadPdf = async (req, res) => {
+  const { originalname: filename } = req.file;
+  const { _id: uploader } = req.user;
 
-//multer setup for file uploads
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "uploads/");
-  },
-  filename: (req, file, cb) => {
-    cb(null, date.now() + path.extname(file.originalname));
-  },
-});
+  Pdf.create({ filename, uploader })
+    .then(() => {
+      res.status(200).send("PDF uploaded successfully");
+    })
+    .catch((error) => {
+      res.status(500).send({ msg: error });
+    });
+};
+
+module.exports = { uploadPdf };
