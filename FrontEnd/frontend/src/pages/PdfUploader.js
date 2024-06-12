@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/PdfUploader.css";
 
 function PdfUploader() {
   const [file, setFile] = useState(null);
@@ -69,6 +70,14 @@ function PdfUploader() {
         </div>
         <div className="button-container">
           <button type="submit">Upload</button>
+          <button
+            type="reset"
+            onClick={(e) => {
+              setFile(null);
+            }}
+          >
+            Clear
+          </button>
         </div>
       </form>
     </div>
