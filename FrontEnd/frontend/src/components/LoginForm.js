@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -29,6 +30,7 @@ function LoginForm() {
           alert("Login successful");
 
           localStorage.setItem("jwtToken", response.data.token);
+          navigate("/uploadPdf");
         } else alert(`login failed : ${response.data.messege}`);
       })
       .catch((error) => {
