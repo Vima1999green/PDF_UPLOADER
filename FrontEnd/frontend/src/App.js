@@ -11,6 +11,7 @@ import SignUpForm from "./components/SignUpForm";
 import ViewPdf from "./pages/ViewPdf";
 
 import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("jwtToken");
@@ -19,6 +20,7 @@ function App() {
       <Router>
         <Navbar style={{ position: "fixed" }} />
         <Routes>
+          <Route path="/" element={<HomePage />} />
           <Route path="/signUp" element={<SignUpForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route
