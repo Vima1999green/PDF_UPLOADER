@@ -29,10 +29,11 @@ function LoginForm() {
           setSuccess(true);
           setErrors({});
           alert("Login successful");
-
           localStorage.setItem("jwtToken", response.data.token);
           navigate("/uploadPdf");
-        } else alert(`login failed : ${response.data.messege}`);
+        } else {
+          alert(`Login failed: ${response.data.message}`);
+        }
       })
       .catch((error) => {
         if (error.response && error.response.data) {

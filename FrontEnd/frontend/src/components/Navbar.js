@@ -8,7 +8,7 @@ function Navbar() {
 
   const handleLogout = () => {
     localStorage.removeItem("jwtToken");
-    navigate("/login");
+    navigate("/");
   };
 
   return (

@@ -15,6 +15,7 @@ import HomePage from "./pages/HomePage";
 
 function App() {
   const isAuthenticated = !!localStorage.getItem("jwtToken");
+
   return (
     <div className="App">
       <Router>
