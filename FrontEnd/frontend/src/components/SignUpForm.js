@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/SignUpForm.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function SignUpForm() {
   const [name, setName] = useState("");
@@ -9,6 +9,7 @@ function SignUpForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,11 +30,13 @@ function SignUpForm() {
       .then((response) => {
         if (response.status === 200) {
           alert("Sign up successful");
+
           setName("");
           setEmail("");
           setPassword("");
           setConfirmPassword("");
           setErrors({});
+          navigate("/login");
         } else {
           alert(`Sign up failed: ${response.data.message}`);
         }

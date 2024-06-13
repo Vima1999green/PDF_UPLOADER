@@ -1,79 +1,63 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-}
-
+/* General container styles */
 .pdf-uploader-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
   max-width: 400px;
-  box-sizing: border-box;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.header-container {
+/* Header styles */
+.header-container h2 {
+  text-align: center;
   margin-bottom: 20px;
 }
 
-.header-container h2 {
-  margin: 0;
-  font-size: 24px;
-  color: #333;
-}
-
+/* Field container styles */
 .field-container {
-  display: flex;
-  flex-direction: column;
   margin-bottom: 20px;
 }
 
 input[type="file"] {
+  display: block;
+  width: 100%;
   padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+/* Button container styles */
 .button-container {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  gap: 10px;
 }
 
 button {
   padding: 10px 20px;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
   background-color: #007bff;
-  color: #fff;
+  color: white;
+  font-weight: bold;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
   background-color: #0056b3;
 }
 
-@media (max-width: 600px) {
+/* Responsive styles */
+@media (max-width: 480px) {
   .pdf-uploader-container {
     padding: 15px;
   }
 
-  .header-container h2 {
-    font-size: 20px;
-  }
-
-  input[type="file"] {
-    padding: 8px;
-  }
-
   button {
     padding: 8px 16px;
+    font-size: 14px;
   }
 }

@@ -88,7 +88,6 @@ const loginUser = async (req, res) => {
             success: true,
             token: "Bearer " + token,
           });
-          console.log(token);
         });
       })
       .catch((error) => {

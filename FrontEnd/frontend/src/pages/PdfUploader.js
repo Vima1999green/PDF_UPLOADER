@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/PdfUploader.css";
+import { Link } from "react-router-dom";
 
 function PdfUploader() {
   const [file, setFile] = useState(null);
@@ -35,11 +36,10 @@ function PdfUploader() {
         }
       );
       console.log("PDF uploaded successfully:", response.data);
+      setFile(null);
       alert("PDF uploaded successfully!");
     } catch (error) {
-      // Enhanced error logging
       if (error.response) {
-        // Server responded with a status other than 200 range
         console.error("Error response:", error.response.data);
         alert(
           `Failed to upload PDF: ${
@@ -47,11 +47,9 @@ function PdfUploader() {
           }`
         );
       } else if (error.request) {
-        // Request was made but no response received
         console.error("Error request:", error.request);
         alert("Failed to upload PDF: No response from server.");
       } else {
-        // Something else happened while setting up the request
         console.error("Error message:", error.message);
         alert(`Failed to upload PDF: ${error.message}`);
       }
@@ -70,6 +68,7 @@ function PdfUploader() {
         </div>
         <div className="button-container">
           <button type="submit">Upload</button>
+          <Link to="/viewPdfs/:uploader">Click here to view uploaded PDFs</Link>
           <button
             type="reset"
             onClick={(e) => {
